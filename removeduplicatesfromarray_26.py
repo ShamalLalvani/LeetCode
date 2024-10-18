@@ -1,25 +1,24 @@
 class Solution(object):
-    def removeElement(self, nums, val):
+    def removeDuplicates(self, nums):
         """
         :type nums: List[int]
-        :type val: int
         :rtype: int
         """
 
-        curr = 0
-        sweep = 0
+        new = 1
+        old = 0
 
-        while sweep < len(nums):
-            if nums[sweep] == val:
-                sweep += 1
+        while new < len(nums):
+            if nums[new] == nums[old]:
+                new = new + 1
             else:
-                nums[curr] = nums[sweep]
-                curr += 1
-                sweep += 1
-        print(curr)
-        print(nums)
+                old = old+1
+                nums[old] = nums[new]
+                new = new + 1
 
+        print(nums)
+        return nums
 
 v = Solution()
-s = [0,1,0,0,2,1,1,0]
-v.removeElement(s,0)
+nums = [1,1,1,2,2,2,2,3,3,3,4,5,6,7,9]
+v.removeDuplicates(nums)
